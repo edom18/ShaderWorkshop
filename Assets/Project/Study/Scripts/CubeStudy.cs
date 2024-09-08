@@ -93,6 +93,46 @@ public class CubeStudy : MonoBehaviour
             20, 23, 21,
             23, 22, 21,
         }, MeshTopology.Triangles, 0);
+
+        _mesh.uv = new Vector2[]
+        {
+            // Front
+            new Vector2(0, 0),
+            new Vector2(0, 1),
+            new Vector2(1, 1),
+            new Vector2(1, 0),
+
+            // Back
+            new Vector2(0, 0),
+            new Vector2(0, 1),
+            new Vector2(1, 1),
+            new Vector2(1, 0),
+
+            // Left
+            new Vector2(0, 0),
+            new Vector2(0, 1),
+            new Vector2(1, 1),
+            new Vector2(1, 0),
+
+            // Right
+            new Vector2(0, 0),
+            new Vector2(0, 1),
+            new Vector2(1, 1),
+            new Vector2(1, 0),
+
+            // Top
+            new Vector2(0, 0),
+            new Vector2(0, 1),
+            new Vector2(1, 1),
+            new Vector2(1, 0),
+
+            // Bottom
+            new Vector2(0, 0),
+            new Vector2(0, 1),
+            new Vector2(1, 1),
+            new Vector2(1, 0),
+        };
+        
         _mesh.RecalculateBounds();
         _mesh.RecalculateNormals();
         _mesh.RecalculateTangents();
