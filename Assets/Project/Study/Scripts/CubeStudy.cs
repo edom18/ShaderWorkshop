@@ -1,17 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class CubeStudy : MonoBehaviour
 {
     [SerializeField] private MeshFilter _meshFilter;
-    
+    [SerializeField] private float _unit = 0.5f;
+
     private Mesh _mesh;
-    
+
     private void Start()
     {
-        float u = 0.5f;
-        
+        RemakeMesh();
+    }
+
+    private void OnValidate()
+    {
+        RemakeMesh();
+    }
+
+    private void Update()
+    {
+        Debug.Log(_mesh.vertices[0]);
+    }
+
+    private void RemakeMesh()
+    {
+        float u = _unit;
+
         _mesh = new Mesh();
         _mesh.vertices = new Vector3[]
         {
@@ -20,31 +35,31 @@ public class CubeStudy : MonoBehaviour
             new Vector3(-u, u, -u),
             new Vector3(u, u, -u),
             new Vector3(u, -u, -u),
-            
+
             // Back
             new Vector3(u, -u, u),
             new Vector3(u, u, u),
             new Vector3(-u, u, u),
             new Vector3(-u, -u, u),
-            
+
             // Left
             new Vector3(-u, -u, u),
             new Vector3(-u, u, u),
             new Vector3(-u, u, -u),
             new Vector3(-u, -u, -u),
-            
+
             // Right
             new Vector3(u, -u, -u),
             new Vector3(u, u, -u),
             new Vector3(u, u, u),
             new Vector3(u, -u, u),
-            
+
             // Top
             new Vector3(-u, u, -u),
             new Vector3(-u, u, u),
             new Vector3(u, u, u),
             new Vector3(u, u, -u),
-            
+
             // Bottom
             new Vector3(-u, -u, -u),
             new Vector3(-u, -u, u),
@@ -57,23 +72,23 @@ public class CubeStudy : MonoBehaviour
             // Front
             0, 1, 3,
             3, 1, 2,
-            
+
             // Back
             4, 5, 7,
             7, 5, 6,
-            
+
             // Left
             8, 9, 11,
             11, 9, 10,
-            
+
             // Right
             12, 13, 15,
             15, 13, 14,
-            
+
             // Top
             16, 17, 19,
             19, 17, 18,
-            
+
             // Bottom
             20, 23, 21,
             23, 22, 21,
@@ -83,10 +98,5 @@ public class CubeStudy : MonoBehaviour
         _mesh.RecalculateTangents();
 
         _meshFilter.mesh = _mesh;
-    }
-
-    private void Update()
-    {
-        
     }
 }
